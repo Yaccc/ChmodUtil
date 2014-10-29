@@ -8,7 +8,7 @@ sys.setdefaultencoding('utf-8')
 sys.path.append('../')
 import readConfig 
 
-__author__='xiezhaodong at 2014-8-14'
+__author__='xiezhaodong at 2014-8-14,'
 
 class Mysql(object):
 	'''
