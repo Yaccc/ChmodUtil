@@ -24,7 +24,7 @@ public class FilterAnnotationUtil {
         private static final FilterAnnotationUtil FILTER_ANNOTATION_UTIL=new FilterAnnotationUtil();
     }
 
-    public static   FilterAnnotationUtil Instanca(){
+    public static   FilterAnnotationUtil Instance(){
         return ClassInstance.FILTER_ANNOTATION_UTIL;
     }
 
