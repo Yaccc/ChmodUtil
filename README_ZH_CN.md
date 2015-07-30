@@ -7,7 +7,7 @@
   FilterAnnotationUtil.Instance().filterContent(fileUrl)
   
 ```
-
+ 感谢[Alienero's](https://github.com/Alienero)提供的思路
 
 #### Python包 ####
 - `python-db.py`是对`SQL`工具类的一个封装.使用它(见下文)
