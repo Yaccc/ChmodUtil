@@ -22,6 +22,5 @@ k=[['wo222ijoi'],['1231231']]
 print CRUDExceptSelect(sql='insert into user (name) values(?)',kw=k,batch=True)
 
 ```
-[English document](https://github.com/xiexiaodong/Utils/blob/master/README.md)
-
-[中文文档](https://github.com/xiexiaodong/Utils/blob/master/README_ZH_CN.md)
+- [English document](https://github.com/xiexiaodong/Utils/blob/master/README.md)
+- [中文文档](https://github.com/xiexiaodong/Utils/blob/master/README_ZH_CN.md)
