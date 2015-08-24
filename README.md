@@ -6,6 +6,11 @@
 FilterAnnotationUtil.Instance().filterContent(fileUrl)
 ```
 Thanks for [Alienero's](https://github.com/Alienero) ideas
+- `KeyGenForIDEA.java`IDEA development tool for the registration code, we use IDEA software development.Do not recommend using this tool. Respect copyright, from me
+```java
+1. javac KeyGenForIDEA.java
+2. java KeyGenForIDEA yourname
+```
 
 #### Python PACKAGE ####
 - `python-db.py`Is a package of `SQL` tools.Use it(see below)
