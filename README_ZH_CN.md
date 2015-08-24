@@ -8,7 +8,7 @@
   
 ```
  感谢[Alienero's](https://github.com/Alienero)提供的思路
--`KeyGenForIDEA.java`类是一个IDEA开发工具的注册机代码，方便我们使用IDEA进行开发，不建议使用此工具。尊重版权，从我做起
+- `KeyGenForIDEA.java`类是一个IDEA开发工具的注册机代码，方便我们使用IDEA进行开发，不建议使用此工具。尊重版权，从我做起
 ```java
 1. javac KeyGenForIDEA.java
 2. java KeyGenForIDEA yourname
