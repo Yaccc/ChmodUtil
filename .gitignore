@@ -51,4 +51,16 @@ coverage.xml
 docs/_build/
 
 # PyBuilder
-target/
+*.class
+# Package Files #
+*.war
+*.ear
+.idea
+classes
+.settings
+.classpath
+.mymetadata
+.project
+*.iml
+target
+lib
