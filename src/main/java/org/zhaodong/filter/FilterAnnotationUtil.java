@@ -1,4 +1,4 @@
-package com.taobao.gps.plugins.filter.annotation;
+package org.zhaodong.filter;
 
 import java.io.DataInputStream;
 import java.io.IOException;
@@ -6,7 +6,7 @@ import java.net.URL;
 import java.util.Stack;
 
 /**
- * ½âÎöÅäÖÃÎÄ¼ş£¬¹ıÂËµôËùÓĞµÄ×¢ÊÍ£¬°üÀ¨//ºÍ/**\ÀàĞÍµÄ×¢ÊÍ
+ * è§£æé…ç½®æ–‡ä»¶ï¼Œè¿‡æ»¤æ‰æ‰€æœ‰çš„æ³¨é‡Šï¼ŒåŒ…æ‹¬//å’Œ/**\ç±»å‹çš„æ³¨é‡Š
  * Created by zhaodong.xzd zhaodong.xzd@alibaba-inc.com(liangzhi)
  * on 2015/7/29.11:47
  */
@@ -15,8 +15,11 @@ public class FilterAnnotationUtil {
     private static final String ANNOTATION_END = "*/";
     private static final int ANNOTAION_SIZE = 2;
 
+    public static void main(String[] args) {
+        System.out.println("xiexie");
+    }
     /**
-     * µ¥ÊµÀı
+     * å•å®ä¾‹
      */
     private FilterAnnotationUtil() {
     }
@@ -31,8 +34,8 @@ public class FilterAnnotationUtil {
 
     /**
      *
-     * @param url  ÎÄ¼şurl
-     * @param any  ÊÇ·ñÕë¶ÔÈÎºÎÎÄ¼ş,Èç¹ûÖ»ÊÇÕë¶Ôgps¿ò¼ÜÄÇÃ´any Îªfalse
+     * @param url  æ–‡ä»¶url
+     * @param any  æ˜¯å¦é’ˆå¯¹ä»»ä½•æ–‡ä»¶,å¦‚æœåªæ˜¯é’ˆå¯¹gpsæ¡†æ¶é‚£ä¹ˆany ä¸ºfalse
      * @return   json
      */
     public static String filterContent(URL url,boolean any) {
@@ -40,20 +43,20 @@ public class FilterAnnotationUtil {
     }
 
     /**
-     * @param content     ÎÄ±¾
-     * @param indexStack  Ë÷ÒıÕ»¿Õ¼ä
-     * @param stringStack µ±Ç°±êÖ¾·ûºÅ
-     * @param indexNow    ÏÖÔÚµÄË÷ÒıÎ»ÖÃ
-     * @param isBefore    ÊÇ·ñÊÇ×¢ÊÍbeforeË÷Òı
+     * @param content     æ–‡æœ¬
+     * @param indexStack  ç´¢å¼•æ ˆç©ºé—´
+     * @param stringStack å½“å‰æ ‡å¿—ç¬¦å·
+     * @param indexNow    ç°åœ¨çš„ç´¢å¼•ä½ç½®
+     * @param isBefore    æ˜¯å¦æ˜¯æ³¨é‡Šbeforeç´¢å¼•
      */
     private static int addIndexFromContentAnnotation(String content, Stack<Integer> indexStack, Stack<String> stringStack, int indexNow, boolean isBefore) {
         int afterIndex = 0;
-        if (isBefore) {//Èç¹ûµ±Ç°ÊÇÇ°×º
-            //´Óµ±Ç°Ë÷Òı¿ªÊ¼ÕÒµ½ºó×º+2±ÜÃâ/[*/]*Çé¿ö£¬ÖĞ¼äÁ½¸ö×éºÏÓ°Ïì½á¹û
+        if (isBefore) {//å¦‚æœå½“å‰æ˜¯å‰ç¼€
+            //ä»å½“å‰ç´¢å¼•å¼€å§‹æ‰¾åˆ°åç¼€+2é¿å…/[*/]*æƒ…å†µï¼Œä¸­é—´ä¸¤ä¸ªç»„åˆå½±å“ç»“æœ
             afterIndex = content.indexOf(ANNOTATION_END, indexNow + ANNOTAION_SIZE);
             stringStack.add(ANNOTATION_END);
         } else {
-            //Èç¹ûÊÇºó×ºµÄ»°Ó¦¸ÃÈ¥ÕÒµ½µ±Ç°Ë÷Òı¿ªÊ¼µÄµÚÒ»¸öÇ°×º
+            //å¦‚æœæ˜¯åç¼€çš„è¯åº”è¯¥å»æ‰¾åˆ°å½“å‰ç´¢å¼•å¼€å§‹çš„ç¬¬ä¸€ä¸ªå‰ç¼€
             afterIndex = content.indexOf(ANNOTATION_START, indexNow + ANNOTAION_SIZE);
             stringStack.add(ANNOTATION_START);
         }
@@ -63,25 +66,25 @@ public class FilterAnnotationUtil {
 
     //TODO
     private static String filterALLStarAnnotation(String content) {
-        //´ËÊ±ÒÑ¾­ÍêÈ«¹ıÂËµôÁËËùÓĞ°üº¬//µÄĞĞÊı
+        //æ­¤æ—¶å·²ç»å®Œå…¨è¿‡æ»¤æ‰äº†æ‰€æœ‰åŒ…å«//çš„è¡Œæ•°
         StringBuilder builder = new StringBuilder(content);
-        Stack<Integer> indexStack = new Stack<Integer>();//´æ·Å×¢ÊÍ¿ªÍ·ºÍ×¢ÊÍ½áÎ²µÄÕ»¿Õ¼ä
+        Stack<Integer> indexStack = new Stack<Integer>();//å­˜æ”¾æ³¨é‡Šå¼€å¤´å’Œæ³¨é‡Šç»“å°¾çš„æ ˆç©ºé—´
         Stack<String> stringStack = new Stack<String>();
-        //±êÖ¾µ±Ç°Ë÷Òı
-        int indexNow = content.indexOf(ANNOTATION_START);//µÃµ½µÚÒ»¸ö¿ªÍ·µÄ×¢ÊÍ
+        //æ ‡å¿—å½“å‰ç´¢å¼•
+        int indexNow = content.indexOf(ANNOTATION_START);//å¾—åˆ°ç¬¬ä¸€ä¸ªå¼€å¤´çš„æ³¨é‡Š
         if (indexNow == -1) return content;
         stringStack.add(ANNOTATION_START);
-        indexStack.add(indexNow);//Ë÷ÒıÈëÕ»
+        indexStack.add(indexNow);//ç´¢å¼•å…¥æ ˆ
 
         while (indexNow < content.length()) {
             boolean isBefore = false;
             if (stringStack.peek().equals(ANNOTATION_START)) isBefore = true;
             int isExists = addIndexFromContentAnnotation(content, indexStack, stringStack, indexNow, isBefore);
-            indexNow = indexStack.peek();//¸Ä±äµ±Ç°Ë÷ÒıÎ»ÖÃ
+            indexNow = indexStack.peek();//æ”¹å˜å½“å‰ç´¢å¼•ä½ç½®
             if (isExists == -1) break;
         }
         /**
-         * ¿ªÊ¼´¦Àí×Ö·û´®
+         * å¼€å§‹å¤„ç†å­—ç¬¦ä¸²
          */
         while (indexStack.size() != 0) {
             int end = indexStack.pop();
@@ -92,10 +95,10 @@ public class FilterAnnotationUtil {
     }
 
     private static String filterAnnotationFinal(String content) {
-        //ÊÇ·ñ¿ªÊ¼¶ÁÈëbuffer,ÊÇ·ñÒÑ¾­½øÈëÁË/**/,ÊÇ·ñÒÑ¾­½øÈëÁËÒıÓÃ
+        //æ˜¯å¦å¼€å§‹è¯»å…¥buffer,æ˜¯å¦å·²ç»è¿›å…¥äº†/**/,æ˜¯å¦å·²ç»è¿›å…¥äº†å¼•ç”¨
         boolean isWrite = true, isStar = false, isQuotation = false;
         StringBuilder builder = new StringBuilder();
-        //×ª»»ÎªcharÊı×é
+        //è½¬æ¢ä¸ºcharæ•°ç»„
         char[] chars = content.toCharArray();
         int length = chars.length;
         loop:
@@ -103,11 +106,11 @@ public class FilterAnnotationUtil {
             char now = chars[index];
             char nowAfter;
             if (isWrite) {
-                if (now == '/' && !isQuotation) {//Ã»ÓĞ½øÈëÒıÓÃ×Ö·û´®Àà±ÈÈç:"//qwe"
+                if (now == '/' && !isQuotation) {//æ²¡æœ‰è¿›å…¥å¼•ç”¨å­—ç¬¦ä¸²ç±»æ¯”å¦‚:"//qwe"
                     if (index + 1 < length) {
                         nowAfter = chars[index + 1];
                         if (nowAfter == '/') {
-                            isWrite = false;//Èç¹ûÊÇÓĞ//ÕâÖÖ×¢ÊÍ£¬½«²»»áĞ´Èëbuffer
+                            isWrite = false;//å¦‚æœæ˜¯æœ‰//è¿™ç§æ³¨é‡Šï¼Œå°†ä¸ä¼šå†™å…¥buffer
                             index++;
                             continue loop;
                         } else if (nowAfter == '*') {
@@ -118,7 +121,7 @@ public class FilterAnnotationUtil {
                         }
                     }
                 } else if (now == '"' || now == '\'' || now == '`') {
-                    isQuotation = !isQuotation;//ÊÇ·ñ½øÈëÒıÓÃÇĞ»»
+                    isQuotation = !isQuotation;//æ˜¯å¦è¿›å…¥å¼•ç”¨åˆ‡æ¢
                 }
                 builder.append(now);
             } else if (isStar) {
@@ -128,7 +131,7 @@ public class FilterAnnotationUtil {
                     isWrite = true;
                 }
             } else {
-                if (now == '\n') isWrite = true;//Ò»Ö±¶Áµ½¸ÃĞĞÄ©Î²,½«¿ÉĞ´ÈëÖÃÎªtrue
+                if (now == '\n') isWrite = true;//ä¸€ç›´è¯»åˆ°è¯¥è¡Œæœ«å°¾,å°†å¯å†™å…¥ç½®ä¸ºtrue
             }
         }
         return builder.toString();
@@ -136,7 +139,7 @@ public class FilterAnnotationUtil {
 
 
     /**
-     * ¹ıÂËµô//È¥µôºóÃæµÄËùÓĞ
+     * è¿‡æ»¤æ‰//å»æ‰åé¢çš„æ‰€æœ‰
      *
      * @param url
      * @return
@@ -149,7 +152,7 @@ public class FilterAnnotationUtil {
                 String line = dataInputStream.readLine();
                 while (line != null) {
                     if (line.contains("//")) {
-                        line = line.substring(0, line.indexOf("//"));//±£Áô//Ç°ÃæµÄÄÚÈİ
+                        line = line.substring(0, line.indexOf("//"));//ä¿ç•™//å‰é¢çš„å†…å®¹
                     }
                     stringBuilder.append(line + "\n");
                     line = dataInputStream.readLine();
@@ -163,7 +166,7 @@ public class FilterAnnotationUtil {
 
 
     /**
-     * Í¨¹ıurl¶ÁÈ¡ÎÄ¼ş
+     * é€šè¿‡urlè¯»å–æ–‡ä»¶
      *
      * @param url
      * @return
@@ -175,7 +178,7 @@ public class FilterAnnotationUtil {
                 DataInputStream dataInputStream = new DataInputStream(url.openStream());
                 String line = dataInputStream.readLine();
                 while (line != null) {
-                    stringBuilder.append(line + "\n");//·½±ã¹ıÂË¼ÓÉÏ\n
+                    stringBuilder.append(line + "\n");//æ–¹ä¾¿è¿‡æ»¤åŠ ä¸Š\n
                     line = dataInputStream.readLine();
                 }
             } catch (IOException e) {

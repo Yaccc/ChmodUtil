@@ -7,6 +7,29 @@ FilterAnnotationUtil.Instance().filterContent(fileUrl)
 ```
 Thanks for [Alienero's](https://github.com/Alienero) ideas
 
+- `ReadWriteLockOfLockSimple`，`ReadWriteLockCanAccess`These two classes are read and write lock implementation, the former is relatively simple to achieve, the latter is relatively complete，Basically realize the read / write lock can be re entered，Read lock upgrade, write lock degradation and other functions。Of course, the gap is still very large and `JDK`，Just to provide you with a learning idea。`readwritelock.example`Package is an example.
+```java
+public void run() {                                                                
+         if (!isWrite){                                             
+             readWrite.readLock();                                  
+             try {                                                  
+                 Thread.currentThread().sleep(5000);              
+             } catch (InterruptedException e) {                 
+                 e.printStackTrace();                              
+             }                                                  
+             readWrite.unReadLock();                          
+         }else{                                                 
+             readWrite.writeLock();                                             
+             try {                                                   
+                 Thread.currentThread().sleep(3000);             
+             } catch (InterruptedException e) {                     
+                 e.printStackTrace();                        
+             }                                                          
+             readWrite.unWriterLock();                                               
+         }                                                                              
+     }                                                                                  
+```
+
 
 #### Python PACKAGE ####
 - `python-db.py`Is a package of `SQL` tools.Use it(see below)
